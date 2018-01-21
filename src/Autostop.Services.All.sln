@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autostop.Services.Directions", "Autostop.Services.Directions\Autostop.Services.Directions.csproj", "{85E60157-4343-4CB5-BF20-519023A0B778}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{48BE1E18-EC7A-4352-81D8-CBECB54869C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A97B55EC-8927-49F0-B7B8-06B8164F8949}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autostop.Services.Maps", "Services\Autostop.Services.Maps\Autostop.Services.Maps.csproj", "{01D6A82B-92B8-4A54-93E6-0A3DB248ECD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autostop.Common.Shared", "Common\Autostop.Common.Shared\Autostop.Common.Shared.csproj", "{FA8AE121-49F2-4ECB-89BE-8244F68F8582}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autostop.Shared.Google.Maps", "Common\Autostop.Shared.Google.Maps\Autostop.Shared.Google.Maps.csproj", "{ED638D67-DFBB-49F1-B459-516C53F2398F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{85E60157-4343-4CB5-BF20-519023A0B778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85E60157-4343-4CB5-BF20-519023A0B778}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85E60157-4343-4CB5-BF20-519023A0B778}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85E60157-4343-4CB5-BF20-519023A0B778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D6A82B-92B8-4A54-93E6-0A3DB248ECD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D6A82B-92B8-4A54-93E6-0A3DB248ECD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D6A82B-92B8-4A54-93E6-0A3DB248ECD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D6A82B-92B8-4A54-93E6-0A3DB248ECD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA8AE121-49F2-4ECB-89BE-8244F68F8582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA8AE121-49F2-4ECB-89BE-8244F68F8582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA8AE121-49F2-4ECB-89BE-8244F68F8582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA8AE121-49F2-4ECB-89BE-8244F68F8582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED638D67-DFBB-49F1-B459-516C53F2398F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED638D67-DFBB-49F1-B459-516C53F2398F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED638D67-DFBB-49F1-B459-516C53F2398F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED638D67-DFBB-49F1-B459-516C53F2398F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01D6A82B-92B8-4A54-93E6-0A3DB248ECD6} = {A97B55EC-8927-49F0-B7B8-06B8164F8949}
+		{FA8AE121-49F2-4ECB-89BE-8244F68F8582} = {48BE1E18-EC7A-4352-81D8-CBECB54869C6}
+		{ED638D67-DFBB-49F1-B459-516C53F2398F} = {48BE1E18-EC7A-4352-81D8-CBECB54869C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F0EAE6F-CBF8-4901-883D-C35CD98ECD77}
