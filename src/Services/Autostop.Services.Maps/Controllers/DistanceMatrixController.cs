@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Google.Maps;
+﻿using System.Threading.Tasks;
 using Google.Maps.DistanceMatrix;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Autostop.Services.Maps.Controllers
 {
-	[Route("api/[distancematrix]")]
+	[Route("api/distancematrix")]
 	public class DistanceMatrixController : Controller
 	{
 		private readonly IDistanceMatrixService _distanceMatrixService;
@@ -16,8 +14,8 @@ namespace Autostop.Services.Maps.Controllers
 			_distanceMatrixService = distanceMatrixService;
 		}
 
-		[HttpGet("")]
-		public Task<DistanceMatrixResponse> Get([ModelBinder()]List<Location> origins, [ModelBinder()]List<Location> destinations)
+		[HttpGet]
+		public Task<DistanceMatrixResponse> Get(string origins, string destinations)
 		{
 			return _distanceMatrixService.GetResponseAsync(new DistanceMatrixRequest
 			{
