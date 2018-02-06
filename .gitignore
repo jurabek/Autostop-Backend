@@ -39,7 +39,7 @@ TestResult.xml
 [Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
-
+.vscode
 # DNX
 project.lock.json
 project.fragment.lock.json
