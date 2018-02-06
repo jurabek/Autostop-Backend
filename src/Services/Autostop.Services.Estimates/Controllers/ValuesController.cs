@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Autostop.Services.PriceCalculator.Controllers
+namespace Autostop.Services.Estimates.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller

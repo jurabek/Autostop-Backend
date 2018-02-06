@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Autostop.Services.PriceCalculator
+namespace Autostop.Services.Estimates
 {
     public class Program
     {

@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  autostop-backend:
+    image: autostop-backend
+    build: .
+    ports:
+      - 3000:3000

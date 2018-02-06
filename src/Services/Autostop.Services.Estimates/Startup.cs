@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Autostop.Services.PriceCalculator
+namespace Autostop.Services.Estimates
 {
     public class Startup
     {
