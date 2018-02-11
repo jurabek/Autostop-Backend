@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Autostop.Services.Identity
 {
@@ -15,18 +16,21 @@ namespace Autostop.Services.Identity
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+	    private readonly IConfiguration _configuration;
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-        }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+	        services.AddSwaggerGen(c =>
+	        {
+		        c.SwaggerDoc("v1", new Info { Title = "Identity API", Version = "v1" });
+	        });
+		}
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -34,7 +38,14 @@ namespace Autostop.Services.Identity
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
-        }
-    }
+	        app.UseSwagger();
+			app.UseSwaggerUI(c =>
+	        {
+		        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Identity API");
+	        });
+
+			app.UseMvc();
+	        app.UseMvcWithDefaultRoute();
+		}
+	}
 }

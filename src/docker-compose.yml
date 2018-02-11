@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  autostop.services.maps:
+    image: autostop.services.maps
+    build:
+      context: .
+      dockerfile: Services/Autostop.Services.Maps/Dockerfile
+
+  autostop.services.identity:
+    image: autostop.services.identity
+    build:
+      context: .
+      dockerfile: Services/Autostop.Services.Identity/Dockerfile
+
+
+  autostop.services.estimates:
+    image: autostop.services.estimates
+    build:
+      context: .
+      dockerfile: Services/Autostop.Services.Estimates/Dockerfile
+

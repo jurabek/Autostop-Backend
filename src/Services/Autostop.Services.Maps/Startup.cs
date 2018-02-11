@@ -10,24 +10,24 @@ namespace Autostop.Services.Maps
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration onfiguration)
         {
-            Configuration = configuration;
+            _configuration = onfiguration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+	    private readonly IConfiguration _configuration;
+		
         public void ConfigureServices(IServiceCollection services)
         {
-            GoogleSigned.AssignAllServices(new GoogleSigned(""));
+	        var gooleMapsApiKey = _configuration["GoogleMapsApiKey"];
+			GoogleSigned.AssignAllServices(new GoogleSigned(gooleMapsApiKey));
 
             services.AddScoped<IDistanceMatrixService, DistanceMatrixService>();
             services.AddMvc();
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Autostop Maps API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Maps API", Version = "v1" });
             });
         }
 
@@ -48,6 +48,7 @@ namespace Autostop.Services.Maps
             });
 
             app.UseMvc();
-        }
-    }
+	        app.UseMvcWithDefaultRoute();
+		}
+	}
 }
