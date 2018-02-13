@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autostop.Services.Identity"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autostop.Services.Estimates", "Services\Autostop.Services.Estimates\Autostop.Services.Estimates.csproj", "{EF4BB7BA-53E0-4DD3-A86D-10D4B49E1D5E}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3646CA9B-1731-4FB2-AF17-1AAADB7F88AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{EF4BB7BA-53E0-4DD3-A86D-10D4B49E1D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF4BB7BA-53E0-4DD3-A86D-10D4B49E1D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF4BB7BA-53E0-4DD3-A86D-10D4B49E1D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3646CA9B-1731-4FB2-AF17-1AAADB7F88AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3646CA9B-1731-4FB2-AF17-1AAADB7F88AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3646CA9B-1731-4FB2-AF17-1AAADB7F88AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3646CA9B-1731-4FB2-AF17-1AAADB7F88AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

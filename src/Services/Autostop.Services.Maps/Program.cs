@@ -19,7 +19,11 @@ namespace Autostop.Services.Maps
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+	            .ConfigureAppConfiguration((builderContext, config) =>
+	            {
+		            config.AddEnvironmentVariables();
+	            })
+				.UseStartup<Startup>()
                 .Build();
     }
 }

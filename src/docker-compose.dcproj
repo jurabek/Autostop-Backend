@@ -5,8 +5,8 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>14e4d463-50fa-421e-8c58-7fc3e5c04d35</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
-    <DockerServiceUrl>http://localhost:{ServicePort}</DockerServiceUrl>
-    <DockerServiceName>autostop.services.maps</DockerServiceName>
+    <DockerServiceUrl>http://192.168.99.100:{ServicePort}</DockerServiceUrl>
+    <DockerServiceName>autostop.services</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
