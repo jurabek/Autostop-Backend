@@ -12,11 +12,17 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "5001:80"
-
-
+ 
   autostop.services.estimates:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "5002:80"
+
+
+  autostop.services.rides:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5003:80"
 

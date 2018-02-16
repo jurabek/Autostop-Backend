@@ -20,3 +20,9 @@ services:
       context: .
       dockerfile: Services/Autostop.Services.Estimates/Dockerfile
 
+
+  autostop.services.rides:
+    image: autostop.services.rides
+    build:
+      context: .
+      dockerfile: Services/Autostop.Services.Rides/Dockerfile
