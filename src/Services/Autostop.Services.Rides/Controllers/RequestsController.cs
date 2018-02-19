@@ -51,5 +51,17 @@ namespace Autostop.Services.Rides.Controllers
 	    {
 		    return Ok();
 	    }
+
+	    [HttpGet("{request_id}/receipt")]
+	    public IActionResult Receipt(string request_id)
+	    {
+		    return Ok();
+	    }
+
+	    [HttpGet("{request_id}/map")]
+		public IActionResult Map(string request_id)
+	    {
+		    return Ok();
+	    }
 	}
 }
