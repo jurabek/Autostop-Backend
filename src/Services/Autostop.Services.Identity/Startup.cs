@@ -45,6 +45,7 @@ namespace Autostop.Services.Identity
 	        });
 
 			app.UseMvc();
+	        app.UseStaticFiles();
 	        app.UseMvcWithDefaultRoute();
 		}
 	}

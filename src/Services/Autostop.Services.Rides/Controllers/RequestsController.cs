@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Autostop.Services.Rides.Controllers
 {
     [Route("api/v1/requests/")]
-    public class RequestsController : Controller
-    {
+    public class RequestsController : ControllerBase
+	{
 	    [HttpPost]
 	    public IActionResult Post([FromBody]RequestBody body)
 	    {

@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Autostop.Services.Rides.Controllers
 {
     [Route("api/[controller]")]
-    public class RidesController : Controller
-    {
+    public class RidesController : ControllerBase
+	{
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()

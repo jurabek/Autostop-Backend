@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Autostop.Services.Maps.Controllers
 {
 	[Route("api/v1/map/distance")]
-	public class DistanceController : Controller
+	public class DistanceController : ControllerBase
 	{
 		private readonly IDistanceMatrixService _distanceMatrixService;
 
