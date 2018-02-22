@@ -15,7 +15,7 @@ namespace Autostop.Services.Identity.Services
 		    TwilioClient.Init(accountSid, authToken);
 		}
 
-	    public async Task<bool>  SendAsync(string phoneNumber, string body)
+	    public async Task<bool> SendAsync(string phoneNumber, string body)
 	    {
 		    var message = await MessageResource.CreateAsync(
 			    to: phoneNumber,

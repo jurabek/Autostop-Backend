@@ -1,12 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Autostop.Services.Identity.Constants;
 using IdentityServer4;
 using IdentityServer4.Models;
+using IdentityServer4.Test;
 
 namespace Autostop.Services.Identity.Configuration
 {
     public static class Config
     {
+        public static List<TestUser> TestUsers()
+        {
+            return new List<TestUser>
+            {
+                new TestUser { Username = "test@test.com", Password = "password", SubjectId = "1" },
+                new TestUser { Username = "test1@test.com", Password = "password", SubjectId = "2" }
+            };
+        }
+
         public static IEnumerable<IdentityResource> GetResources()
         {
             return new List<IdentityResource>
@@ -30,6 +41,17 @@ namespace Autostop.Services.Identity.Configuration
         {
             return new List<Client>
             {
+                new Client
+                {
+                    ClientId = "phone_verify",
+                    AllowedGrantTypes = new List<string> { IdentityConstants.GrantType.VerifyPhoneNumber },
+                    ClientSecrets = { new Secret ("secret".Sha256 ()) },
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                    },
+                },
+
                 // resource owner password grant client
                 new Client
                 {

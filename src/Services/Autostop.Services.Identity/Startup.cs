@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Autostop.Services.Identity.Configuration;
 using Autostop.Services.Identity.Data;
 using Autostop.Services.Identity.Models;
+using Autostop.Services.Identity.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -38,10 +39,12 @@ namespace Autostop.Services.Identity
 
             services.AddMvc();
             services.AddIdentityServer()
+                    .AddExtensionGrantValidator<VerifyPhoneNumberTokenGrantValidator>()
                     .AddDeveloperSigningCredential()
                     .AddInMemoryApiResources(Config.GetApis())
                     .AddInMemoryIdentityResources(Config.GetResources())
-                    .AddInMemoryClients(Config.GetClients());
+                    .AddInMemoryClients(Config.GetClients())
+                    .AddTestUsers(Config.TestUsers());
 
             services.AddSwaggerGen(c =>
             {
