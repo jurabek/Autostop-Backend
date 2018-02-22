@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using Autostop.Services.Identity.Abstraction.Services;
 using Autostop.Services.Identity.Models;
@@ -7,17 +6,16 @@ using Autostop.Services.Identity.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using IdentityServer4.Models;
 
 namespace Autostop.Services.Identity.Controllers
 {
-    [Route("api/phone_authentication")]
+	[Route("api/phone_authentication")]
     public class PhoneAuthenticationController : ControllerBase
     {
         private readonly PhoneNumberTokenProvider<ApplicationUser> _phoneNumberTokenProvider;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ISmsService _smsService;
 
         public PhoneAuthenticationController(
             PhoneNumberTokenProvider<ApplicationUser> phoneNumberTokenProvider,
@@ -26,8 +24,7 @@ namespace Autostop.Services.Identity.Controllers
             _phoneNumberTokenProvider = phoneNumberTokenProvider;
             _userManager = userManager;
         }
-
-        private string TemporarySecurityStamp = new Guid().ToString();
+		
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -37,7 +34,7 @@ namespace Autostop.Services.Identity.Controllers
             ApplicationUser user = await GetUser(loginViewModel);
 
             string token = await _phoneNumberTokenProvider.GenerateAsync("verify_number", _userManager, user);
-            return Accepted();
+            return Accepted(token);
         }        
 
         [HttpPut]
@@ -54,8 +51,8 @@ namespace Autostop.Services.Identity.Controllers
                 user = new ApplicationUser()
                 {
                     PhoneNumber = loginViewModel.PhoneNumber,
-                    SecurityStamp = TemporarySecurityStamp
-                };
+                    SecurityStamp = loginViewModel.PhoneNumber.Sha256()
+				};
             }
 
             return user;
