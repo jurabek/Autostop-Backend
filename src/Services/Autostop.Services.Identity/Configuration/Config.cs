@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Autostop.Services.Identity.Constants;
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
@@ -18,22 +18,24 @@ namespace Autostop.Services.Identity.Configuration
             };
         }
 
-        public static IEnumerable<IdentityResource> GetResources()
+        public static IEnumerable<IdentityResource> GetIdentityResources()
         {
             return new List<IdentityResource>
             {
-                new IdentityResources.OpenId (),
-                new IdentityResources.Profile ()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile(),
+                new IdentityResources.Phone(),
+                new IdentityResources.Email()
             };
         }
 
-        public static IEnumerable<ApiResource> GetApis()
+        public static IEnumerable<ApiResource> GetApiResources()
         {
             return new List<ApiResource>
             {
-                new ApiResource ("estimates", "Estimates Identity Api"),
-                new ApiResource ("maps", "Maps Identity Api"),
-                new ApiResource ("rides", "Rides Identity Api")
+                new ApiResource ("estimates", "Estimates Identity Api") { UserClaims = { JwtClaimTypes.Role, JwtClaimTypes.PhoneNumber } },
+                new ApiResource ("maps", "Maps Identity Api") { UserClaims = { JwtClaimTypes.Role, JwtClaimTypes.PhoneNumber } },
+                new ApiResource ("rides", "Rides Identity Api") { UserClaims = { JwtClaimTypes.Role, JwtClaimTypes.PhoneNumber } }
             };
         }
 
@@ -43,16 +45,17 @@ namespace Autostop.Services.Identity.Configuration
             {
                 new Client
                 {
-                    ClientId = "phone_verify",
+                    ClientId = "phone_number_authentication",
                     AllowedGrantTypes = new List<string> { IdentityConstants.GrantType.VerifyPhoneNumber },
                     ClientSecrets = { new Secret ("secret".Sha256 ()) },
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.OfflineAccess
                     },
+                    AllowOfflineAccess = true
                 },
-
-                // resource owner password grant client
+                
                 new Client
                 {
                     ClientId = "resource_owner",
@@ -69,7 +72,7 @@ namespace Autostop.Services.Identity.Configuration
                     },
                     AllowOfflineAccess = true
                 },
-                // OpenID Connect hybrid flow and client credentials client (MVC)
+
                 new Client
                 {
                     ClientId = "mvc_client",

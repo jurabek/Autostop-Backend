@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Autostop.Services.Identity.Configuration;
+﻿using Autostop.Services.Identity.Configuration;
 using Autostop.Services.Identity.Data;
 using Autostop.Services.Identity.Models;
 using Autostop.Services.Identity.Validation;
@@ -12,8 +8,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Autostop.Services.Identity
@@ -30,7 +24,10 @@ namespace Autostop.Services.Identity
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseNpgsql(_configuration["DefaultConnectionString"]);
+                if (_configuration["UseSqlServer"] == bool.TrueString)
+                    options.UseSqlServer(_configuration["SqlServerConnectionString"]);
+                else
+                    options.UseNpgsql(_configuration["DefaultConnectionString"]);
             });
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -38,13 +35,18 @@ namespace Autostop.Services.Identity
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
-            services.AddIdentityServer()
+            services.AddIdentityServer(options =>
+                    {
+                        options.Events.RaiseErrorEvents = true;
+                        options.Events.RaiseFailureEvents = true;
+                    })
                     .AddExtensionGrantValidator<VerifyPhoneNumberTokenGrantValidator>()
                     .AddDeveloperSigningCredential()
-                    .AddInMemoryApiResources(Config.GetApis())
-                    .AddInMemoryIdentityResources(Config.GetResources())
+                    .AddInMemoryApiResources(Config.GetApiResources())
+                    .AddInMemoryIdentityResources(Config.GetIdentityResources())
                     .AddInMemoryClients(Config.GetClients())
-                    .AddTestUsers(Config.TestUsers());
+                    .AddTestUsers(Config.TestUsers())
+                    .AddAspNetIdentity<ApplicationUser>();
 
             services.AddSwaggerGen(c =>
             {
