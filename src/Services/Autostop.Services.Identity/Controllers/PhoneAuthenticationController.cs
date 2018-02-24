@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Autostop.Services.Identity.Abstraction.Services;
 using Autostop.Services.Identity.Models;
 using Autostop.Services.Identity.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -14,16 +15,19 @@ namespace Autostop.Services.Identity.Controllers
 	[Route("api/phone_authentication")]
     public class PhoneAuthenticationController : ControllerBase
     {
-        private readonly DataProtectorTokenProvider<ApplicationUser> _dataProtectorTokenProvider;
+	    private readonly ISmsService _smsService;
+	    private readonly DataProtectorTokenProvider<ApplicationUser> _dataProtectorTokenProvider;
         private readonly PhoneNumberTokenProvider<ApplicationUser> _phoneNumberTokenProvider;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public PhoneAuthenticationController(
+			ISmsService smsService,
             DataProtectorTokenProvider<ApplicationUser> dataProtectorTokenProvider,
             PhoneNumberTokenProvider<ApplicationUser> phoneNumberTokenProvider,
             UserManager<ApplicationUser> userManager)
         {
-            _dataProtectorTokenProvider = dataProtectorTokenProvider;
+	        _smsService = smsService;
+	        _dataProtectorTokenProvider = dataProtectorTokenProvider;
             _phoneNumberTokenProvider = phoneNumberTokenProvider;
             _userManager = userManager;
         }
@@ -37,17 +41,11 @@ namespace Autostop.Services.Identity.Controllers
             var user = await GetUser(loginViewModel);
             var resendToken = await _dataProtectorTokenProvider.GenerateAsync("resend_token", _userManager, user);
             var token = await _phoneNumberTokenProvider.GenerateAsync("verify_number", _userManager, user);
-
-            // TODO: here send token to phone number using ISenderService
-
-            var result = new Dictionary<string, string>
-            {
-                { "verification_token", token },
-                { "resend_token", resendToken }
-            };
-
-            return Accepted(result);
-
+	        var success = await _smsService.SendAsync(loginViewModel.PhoneNumber, $"Your Autostop verification code is: {token}");
+			
+	        return success 
+		        ? (IActionResult)Accepted(new Dictionary<string, string> {{"resend_token", resendToken}}) 
+		        : BadRequest();
         }        
 
         [HttpPut("resend/{resendToken}")]
