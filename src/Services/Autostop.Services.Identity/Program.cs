@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using JetBrains.Annotations;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace Autostop.Services.Identity
 {
@@ -16,7 +11,8 @@ namespace Autostop.Services.Identity
         {
             BuildWebHost(args).Run();
         }
-
+		
+		[UsedImplicitly]
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
 	            .ConfigureAppConfiguration((builderContext, config) =>

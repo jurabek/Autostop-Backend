@@ -11,7 +11,8 @@
 
         public struct GrantType
         {
-            public const string VerifyPhoneNumber = "verify_phone_number_token";
+            public const string VerifyPhoneNumber = "phone_number_token";
+	        public const string PasswordLess = "password_less_token";
         }
     }
 }

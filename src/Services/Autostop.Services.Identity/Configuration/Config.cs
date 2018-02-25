@@ -75,21 +75,18 @@ namespace Autostop.Services.Identity.Configuration
 
                 new Client
                 {
-                    ClientId = "mvc_client",
-                    ClientName = "MVC Client",
-                    AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
-                    RequireConsent = true,
+					ClientId = "mvc_web_admin",
+                    ClientName = "Web Admin Client",
+	                AllowedGrantTypes = GrantTypes.Implicit,
+					RequireConsent = false,
                     ClientSecrets = { new Secret ("secret".Sha256()) },
-                    RedirectUris = { "http://localhost:5002/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
+                    RedirectUris = { "http://localhost:61618/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:61618/signout-callback-oidc" },
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.OfflineAccess,
-                        "estimates",
-                        "maps",
-                        "rides"
+                        IdentityServerConstants.StandardScopes.OfflineAccess
                     },
                     AllowOfflineAccess = true
                 }

@@ -19,7 +19,6 @@ namespace Autostop.Services.Identity.Services
 	    {
 		    var message = await MessageResource.CreateAsync(
 			    to: phoneNumber,
-			    from: "+15017250604",
 			    body: body);
 
 		    return message.Status != MessageResource.StatusEnum.Failed;

@@ -26,3 +26,10 @@ services:
     build:
       context: .
       dockerfile: Services/Autostop.Services.Rides/Dockerfile
+
+  autostop.web.admin:
+    image: autostop.web.admin
+    build:
+      context: .
+      dockerfile: Web Apps/Autostop.Web.Admin/Dockerfile
+

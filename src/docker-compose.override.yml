@@ -26,3 +26,10 @@ services:
     ports:
       - "5003:80"
 
+
+  autostop.web.admin:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
