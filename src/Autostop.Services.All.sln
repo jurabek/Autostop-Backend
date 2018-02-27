@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autostop.Services.Rides", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Apps", "Web Apps", "{DE66B8D3-E99D-4F90-97E2-71FC642F155C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autostop.Web.Admin", "Web Apps\Autostop.Web.Admin\Autostop.Web.Admin.csproj", "{31D63C7E-4399-4275-96D1-D18A5856472D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autostop.Web.Admin", "Web Apps\Autostop.Web.Admin\Autostop.Web.Admin.csproj", "{31D63C7E-4399-4275-96D1-D18A5856472D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autostop.WebHost.Customization", "Common\Autostop.WebHost.Customization\Autostop.WebHost.Customization.csproj", "{2E636D66-2634-4DD1-A5AB-389F90B82E86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{31D63C7E-4399-4275-96D1-D18A5856472D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31D63C7E-4399-4275-96D1-D18A5856472D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31D63C7E-4399-4275-96D1-D18A5856472D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E636D66-2634-4DD1-A5AB-389F90B82E86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E636D66-2634-4DD1-A5AB-389F90B82E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E636D66-2634-4DD1-A5AB-389F90B82E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E636D66-2634-4DD1-A5AB-389F90B82E86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{EF4BB7BA-53E0-4DD3-A86D-10D4B49E1D5E} = {A97B55EC-8927-49F0-B7B8-06B8164F8949}
 		{77134B09-9571-407F-A733-78F2A20E1C36} = {A97B55EC-8927-49F0-B7B8-06B8164F8949}
 		{31D63C7E-4399-4275-96D1-D18A5856472D} = {DE66B8D3-E99D-4F90-97E2-71FC642F155C}
+		{2E636D66-2634-4DD1-A5AB-389F90B82E86} = {48BE1E18-EC7A-4352-81D8-CBECB54869C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F0EAE6F-CBF8-4901-883D-C35CD98ECD77}

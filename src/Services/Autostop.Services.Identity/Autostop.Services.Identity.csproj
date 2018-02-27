@@ -44,4 +44,8 @@
     <None Include="wwwroot\lib\jquery\jquery.min.map" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Autostop.WebHost.Customization\Autostop.WebHost.Customization.csproj" />
+  </ItemGroup>
+
 </Project>

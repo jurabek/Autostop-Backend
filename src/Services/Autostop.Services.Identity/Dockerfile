@@ -6,6 +6,7 @@ FROM microsoft/aspnetcore-build:2.0 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY Services/Autostop.Services.Identity/Autostop.Services.Identity.csproj Services/Autostop.Services.Identity/
+COPY Common/Autostop.WebHost.Customization/Autostop.WebHost.Customization.csproj Common/Autostop.WebHost.Customization/
 RUN dotnet restore
 COPY . .
 WORKDIR /src/Services/Autostop.Services.Identity
